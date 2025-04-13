@@ -308,6 +308,10 @@
                             </form>
                         </div>
                     </div>
+                    <div>
+                        <video id="localVideo" autoplay muted></video>
+                        <div id="remoteVideos"></div>
+                    </div>
                 </div>
                 <!-- /.col-md-4 -->
             </div>
@@ -555,6 +559,7 @@
                     });
                     // Join room
                     socket.emit('new room', $roomnum.val(), function(data) {
+                        socket.emit('join', $roomnum.val());
                         // This should only call back if the client is the host
                         if (data) {
                             console.log("Host is syncing the new socket!")
@@ -734,6 +739,7 @@
     <script src="js/host.js"></script>
     <script src="js/events.js"></script>
     <script src="js/notify.js"></script>
+    <script src="js/media.js"></script>
 
     <!-- Youtube -->
     <script src="js/yt.js"></script>
